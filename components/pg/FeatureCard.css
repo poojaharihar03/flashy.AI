@@ -1,0 +1,17 @@
+/* styles/style.css */
+
+@keyframes bottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .bottom_portion {
+    animation: bottom 1s ease-in forwards;
+  }
+  
