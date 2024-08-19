@@ -1,6 +1,30 @@
+// 'use client';
+// import { useUser } from '@clerk/nextjs';
+// import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
+// import FlashCardPage from './FlashCardPage';
+
+// export default function FlashcardPageWrapper() {
+//   const { isLoaded, isSignedIn, user } = useUser();
+//   const router = useRouter();
+
+//   useEffect(() => {
+//     if (isLoaded && !isSignedIn) {
+//       router.push('/');
+//     }
+//   }, [isLoaded, isSignedIn, router]);
+
+//   if (!isLoaded || !isSignedIn) {
+//     return null;
+//   }
+
+//   return <FlashCardPage />;
+// }
+
 'use client';
 import { useState } from 'react';
 import styles from './FlashcardGenerator.module.css';
+import { UserButton } from '@clerk/nextjs';
 
 export default function FlashcardPage() {
   const [inputText, setInputText] = useState('');
@@ -10,6 +34,7 @@ export default function FlashcardPage() {
   const [flipped, setFlipped] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showFlashcard, setShowFlashcard] = useState(false);
+  const [open, setOpem] = useState(false);
 
   const handleGenerateFlashcards = async () => {
     const formData = new FormData();
@@ -104,6 +129,7 @@ export default function FlashcardPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 flex flex-col items-center justify-center py-8 px-4">
+      <UserButton />
       <h1 className="text-4xl font-bold mb-8 text-gray-800">Generate Flashcards</h1>
 
       <div className={`${styles.uploadSection} mb-12`}>

@@ -9,11 +9,11 @@ const Navbar = () => (
         </Link>
         <ul className="flex flex-wrap justify-center space-x-4 md:space-x-6 mb-4 md:mb-0">
           <li><Link href="/">Home</Link></li>
-          <li><Link href="/#banner">Product</Link></li>
+          <li><Link href="/#pricing">Product</Link></li>
           <li><Link href="/contact">Contact</Link></li>
         </ul>
         <div className="flex space-x-4">
-          <button className="px-4 py-2 text-gray-600 hover:text-gray-900">Login</button>
+          <Link href="/sign-up" className="px-4 py-2 text-gray-600 hover:text-gray-900">Login</Link>
           <Link href="/sign-up" className="btn bg-[#D9D8EE] text-black py-2 px-4 rounded-lg shadow-lg font-bold hover:bg-purple-300 transition-transform duration-300 transform hover:scale-105">
             Get Started
           </Link>

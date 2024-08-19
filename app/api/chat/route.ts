@@ -74,8 +74,7 @@ async function generateFlashcards(text: string): Promise<{ front: string; back: 
 
     return flashcards;
   } catch (error) {
-    // console.error('Error extracting flashcards:', error);
+    console.error('Error extracting flashcards:', error);
     return [];
   }
 }
-
