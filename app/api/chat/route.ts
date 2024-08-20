@@ -15,7 +15,13 @@ export async function POST(request: Request) {
     }
 
     const content = text || await extractTextFromFile(file);
+    console.log('Content to generate flashcards from:', content);
+
     const flashcards = await generateFlashcards(content);
+
+    if (flashcards.length === 0) {
+      return NextResponse.json({ error: 'No flashcards were generated' }, { status: 404 });
+    }
 
     return NextResponse.json({ flashcards });
   } catch (error) {
@@ -44,15 +50,18 @@ async function extractTextFromBuffer(buffer: Buffer): Promise<string> {
 
 async function generateFlashcards(text: string): Promise<{ front: string; back: string }[]> {
   try {
+    console.log('Generating flashcards for text:', text);
     const response = await groq.chat.completions.create({
       messages: [
         {
           role: 'user',
-          content: `Extract and format flashcards from the following text. Each flashcard should have a question on the front and an answer on the back. Format each flashcard as follows: "Question: [Question Text] Answer: [Answer Text]".\n\n${text}`,
+          content: `Generate 10 flashcards about the following topic. Each flashcard should have a question on the front and an answer on the back. Format each flashcard as follows: "Question: [Question Text] Answer: [Answer Text]".\n\nTopic: ${text}`,
         },
       ],
-      model: 'llama3-8b-8192', // Ensure this is a valid model name
+      model: 'llama3-8b-8192',
     });
+
+    console.log('AI Response:', response.choices[0]?.message?.content);
 
     const flashcards = response.choices.flatMap(choice => {
       const content = choice.message.content.trim();
@@ -72,10 +81,10 @@ async function generateFlashcards(text: string): Promise<{ front: string; back: 
       }, [] as { front: string; back: string }[]);
     });
 
+    console.log('Generated flashcards:', flashcards);
     return flashcards;
   } catch (error) {
-    // console.error('Error extracting flashcards:', error);
-    return [];
+    console.error('Error generating flashcards:', error);
+    throw error;
   }
 }
-

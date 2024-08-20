@@ -2,6 +2,7 @@ import Navbar from '../components/pg/Navbar';
 import MainSection from '../components/pg/MainSection';
 import Footer from '../components/pg/Footer';
 import Banner from '../components/pg/Banner';
+import Pricing from '../components/pg/Pricing';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <Navbar />
         <MainSection />
         <Banner />
+        <Pricing />
         <Footer />
       </div>
     </div>
