@@ -55,7 +55,7 @@ async function generateFlashcards(text: string): Promise<{ front: string; back: 
       messages: [
         {
           role: 'user',
-          content: `Generate 5 flashcards about the following topic. Each flashcard should have a question on the front and an answer on the back. Format each flashcard as follows: "Question: [Question Text] Answer: [Answer Text]".\n\nTopic: ${text}`,
+          content: `Generate 10 flashcards about the following topic. Each flashcard should have a question on the front and an answer on the back. Format each flashcard as follows: "Question: [Question Text] Answer: [Answer Text]".\n\nTopic: ${text}`,
         },
       ],
       model: 'llama3-8b-8192',
