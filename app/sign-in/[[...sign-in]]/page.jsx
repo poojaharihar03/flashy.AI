@@ -1,7 +1,7 @@
-import { SignedIn, SignedOut, SignUp, UserButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignIn, UserButton } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
-export default function SignUpPage() {
+export default function SignInPage() {
   return (
     <>
       <SignedIn>
@@ -9,7 +9,7 @@ export default function SignUpPage() {
       </SignedIn>
       <SignedOut>
         <div className="flex items-center justify-center w-full h-screen">
-          <SignUp afterSignUpUrl="/flashcard" />
+          <SignIn afterSignInUrl="/flashcard" />
         </div>
       </SignedOut>
     </>

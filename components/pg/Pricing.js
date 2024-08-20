@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
+import getStripe from '../../utils/get-stripe';
 
 
-const PricingCard = ({ tier, price, features }) => (
+const PricingCard = ({ tier, price, features, onClick }) => (
   <div className="bg-white rounded-lg shadow-lg p-6 m-4 flex flex-col justify-between transition-transform duration-300 hover:scale-105">
     <div>
       <h3 className="text-2xl font-bold text-purple-600 mb-4">{tier}</h3>
@@ -17,13 +19,36 @@ const PricingCard = ({ tier, price, features }) => (
         ))}
       </ul>
     </div>
-    <Link href='/sign-up' className="bg-purple-600 text-white font-bold py-2 px-4 rounded hover:bg-purple-700 transition duration-300 text-center">
+    <button onClick={onClick} className="bg-purple-600 text-white font-bold py-2 px-4 rounded hover:bg-purple-700 transition duration-300 text-center">
       Get Started
-    </Link>
+    </button>
   </div>
 );
 
 const Pricing = () => {
+  const handleSubmit = async () => {
+    const checkoutSession = await fetch('/api/checkout-session', {
+      method: 'POST',
+      headers: {
+        origin: "http://localhost:3000"
+      },
+    });
+
+    const checkoutSessionJSON = await checkoutSession.json();
+
+    if(checkoutSessionJSON.statusCode === 500){
+      console.error(checkoutSession.message);
+      return;
+    }
+    const stripe = await getStripe();
+    const {error} = await stripe.redirectToCheckout({
+      sessionId: checkoutSessionJSON.id
+    });
+
+    if(error){
+      console.warn(error.message);
+    }
+  }
   return (
     <section id="pricing" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -38,7 +63,7 @@ const Pricing = () => {
               "Basic features"
             ]}
           />
-          <PricingCard
+          <PricingCard onClick={handleSubmit}
             tier="Pro"
             price="$10/month"
             features={[

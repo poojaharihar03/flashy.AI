@@ -3,7 +3,6 @@ import MainSection from '../components/pg/MainSection';
 import Footer from '../components/pg/Footer';
 import Banner from '../components/pg/Banner';
 import Pricing from '../components/pg/Pricing';
-import getStripe from '../utils/get-stripe';
 
 export default function Home() {
   return (
