@@ -1,4 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Flashy.AI
+
+A web app that generates flashcards from uploaded documents (PDF, DOCX, PPTX, TXT) or input text.
+This tool helps users create study aids by converting text content into flashcards that can be used for revision. It also features Stripe for payment.
+
+## Features
+
+- **File Upload**: Drag and drop or select files from your device (PDF, DOC, DOCX, PPTX, TXT) to generate flashcards.
+- **Text Input**: Enter text manually to create flashcards.
+- **Flashcard Navigation**: Flip through generated flashcards to review content.
+- **Firebase Integration**: Store user data, flashcards, and other content securely using Firebase.
+- **Stripe Payments**: Support for payment processing using Stripe for premium features.
+- **Responsive Design**: The interface is optimized for both desktop and mobile devices.
+
+## Technologies Used
+
+- **React**: Frontend framework for building the user interface.
+- **TypeScript**: Provides type safety for JavaScript code.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **Node.js**: Backend environment for handling file parsing and API requests.
+- **Firebase**: Used for storing user data and flashcards.
+- **Stripe**: Integrated for handling payment processing.
+
+## Installation
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/yourusername/flashcard-generator.git
+   cd flashcard-generator
+
+
+2. **Install**
+   ```
+   npm install
+   ```
 
 ## Getting Started
 
