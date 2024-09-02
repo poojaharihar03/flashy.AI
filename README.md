@@ -12,6 +12,13 @@ This tool helps users create study aids by converting text content into flashcar
 - **Stripe Payments**: Support for payment processing using Stripe for premium features.
 - **Responsive Design**: The interface is optimized for both desktop and mobile devices.
 
+
+
+https://github.com/user-attachments/assets/e381a730-e26a-447a-8806-84381d0e8cef
+
+
+  
+
 ## Technologies Used
 
 - **React**: Frontend framework for building the user interface.
