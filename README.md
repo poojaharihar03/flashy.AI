@@ -1,4 +1,4 @@
-# Flashy.AI
+# Flashy.AI 
 
 A web app that generates flashcards from uploaded documents (PDF, DOCX, PPTX, TXT) or input text.
 This tool helps users create study aids by converting text content into flashcards that can be used for revision. It also features Stripe for payment.
